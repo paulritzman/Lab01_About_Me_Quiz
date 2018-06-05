@@ -28,9 +28,17 @@ namespace AboutMeQuiz
             string vacationGuess = AskOverseasVacationQ();
             CheckOverseasVacationAnswer(vacationGuess);
 
-            // Asks the user to guess which Code 401 course I chose to take at Code Fellows
+            // Asks the user to guess which Code 401 course I chose to take at Code Fellows.
             string code401Guess = AskCode401Q();
             CheckCode401Answer(code401Guess);
+
+            // Instructs the user on how to exit out of the Console application - loop continues if user enters any value as input.
+            string closeProgram = "";
+            do
+            {
+                Console.WriteLine("Press the \"Enter/Return\" key to close the program.");
+                closeProgram = Console.ReadLine();
+            } while (closeProgram != "");
         }
 
         static int AskAgeQ()
@@ -38,7 +46,7 @@ namespace AboutMeQuiz
             Console.Write("How old am I? ");
             
             // Try/Catch block to validate that user input is a positive number.
-            // Returning int instead of uint, as the input has already been validated as positive.
+            // Returns int instead of uint, as the input has already been validated as positive.
             try
             {
                 uint guess = uint.Parse(Console.ReadLine());
@@ -49,7 +57,7 @@ namespace AboutMeQuiz
                 Console.WriteLine($"\nYou did not input a valid, positive number: {e.Message}\n");
             }
 
-            // return -1 as CheckAgeAnswer is called next, and age can never be a negative - so will always be false.
+            // returns -1 as age can never be a negative - so CheckAgeAnswer will evaluate to false.
             return -1;
         }
 
@@ -78,7 +86,7 @@ namespace AboutMeQuiz
 
         static void CheckBirthCityAnswer(string guessedCity)
         {
-            // Preserving correct capitalization of birthCity, for use in output text
+            // Preserving correct capitalization of birthCity, for use in output text.
             string birthCity = "Everett";
 
             if (guessedCity == birthCity.ToLower())
@@ -135,7 +143,7 @@ namespace AboutMeQuiz
 
         static void CheckOverseasVacationAnswer(string guessedDestination)
         {
-            // Preserving correct capitalization of destinationCountry, for use in output text
+            // Preserving correct capitalization of destinationCountry, for use in output text.
             string destinationCountry = "South Korea";
 
             if (guessedDestination == destinationCountry.ToLower())
@@ -159,8 +167,8 @@ namespace AboutMeQuiz
 
         static void CheckCode401Answer(string guessedCourse)
         {
-            // Defines multiple acceptable answers
-            // Preserving correct capitalization for use in output text
+            // Defines multiple acceptable answers.
+            // Preserving correct capitalization for use in output text.
             string code401Course = "ASP.NET Core", code401Shortened = ".NET", code401Language = "C#";
 
             if (guessedCourse == code401Course.ToLower() || guessedCourse == code401Shortened.ToLower() || guessedCourse == code401Language.ToLower())

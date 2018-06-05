@@ -10,6 +10,8 @@ namespace AboutMeQuiz
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Lets play a guessing game!\n");
+
             // Asks the user to guess my age - AskAgeQ returns -1 if no valid guess input.
             int ageGuess = AskAgeQ();
             CheckAgeAnswer(ageGuess);

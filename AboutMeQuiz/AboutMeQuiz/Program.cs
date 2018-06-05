@@ -26,7 +26,9 @@ namespace AboutMeQuiz
             string vacationGuess = AskOverseasVacationQ();
             CheckOverseasVacationAnswer(vacationGuess);
 
-            Console.ReadLine();
+            // Asks the user to guess which Code 401 course I chose to take at Code Fellows
+            string code401Guess = AskCode401Q();
+            CheckCode401Answer(code401Guess);
         }
 
         static int AskAgeQ()
@@ -42,7 +44,7 @@ namespace AboutMeQuiz
             }
             catch (Exception e)
             {
-                Console.WriteLine($"\nYou did not input a valid, positive number: {e}\n");
+                Console.WriteLine($"\nYou did not input a valid, positive number: {e.Message}\n");
             }
 
             // return -1 as CheckAgeAnswer is called next, and age can never be a negative - so will always be false.
@@ -144,6 +146,30 @@ namespace AboutMeQuiz
             }
         }
 
+        static string AskCode401Q()
+        {
+            Console.Write("Which 401 course did I choose to pursue at Code Fellows? ");
 
+            // Converts user input to lower case, to simplify the comparison with acceptable answers in CheckCode401Answer().
+            string guess = Console.ReadLine().ToLower();
+            return guess;
+        }
+
+        static void CheckCode401Answer(string guessedCourse)
+        {
+            // Defines multiple acceptable answers
+            // Preserving correct capitalization for use in output text
+            string code401Course = "ASP.NET Core", code401Shortened = ".NET", code401Language = "C#";
+
+            if (guessedCourse == code401Course.ToLower() || guessedCourse == code401Shortened.ToLower() || guessedCourse == code401Language.ToLower())
+            {
+                Console.WriteLine("Correct!\n");
+            }
+            else
+            {
+                Console.WriteLine($"Incorrect, I chose to take the {code401Course} course.");
+                Console.WriteLine($"Other accepted answers: {code401Shortened} and {code401Language}.\n");
+            }
+        }
     }
 }

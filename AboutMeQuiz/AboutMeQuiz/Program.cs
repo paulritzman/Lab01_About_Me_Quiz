@@ -22,6 +22,10 @@ namespace AboutMeQuiz
             bool dancerGuess = AskDancerQ();
             CheckDancerAnswer(dancerGuess);
 
+            // Asks the user to guess which country I will be traveling to when going overseas for the first time.
+            string vacationGuess = AskOverseasVacationQ();
+            CheckOverseasVacationAnswer(vacationGuess);
+
             Console.ReadLine();
         }
 
@@ -63,16 +67,17 @@ namespace AboutMeQuiz
         {
             Console.Write("Which city was I born in? ");
             
-            // Converts user input to lower case, in order to simplify the comparison with correctCity in CheckBirthCityAnswer().
+            // Converts user input to lower case, to simplify the comparison with correctCity in CheckBirthCityAnswer().
             string guess = Console.ReadLine().ToLower();
             return guess;
         }
 
         static void CheckBirthCityAnswer(string guessedCity)
         {
-            string birthCity = "everett";
+            // Preserving correct capitalization of birthCity, for use in output text
+            string birthCity = "Everett";
 
-            if (guessedCity == birthCity)
+            if (guessedCity == birthCity.ToLower())
             {
                 Console.WriteLine("Correct!\n");
             }
@@ -114,5 +119,31 @@ namespace AboutMeQuiz
                 Console.WriteLine("Incorrect, I was a Ukrainian dancer for 3 years.\n");
             }
         }
+
+        static string AskOverseasVacationQ()
+        {
+            Console.Write("What country do I have designated as the destination for my first overseas vacation? ");
+
+            // Converts user input to lower case, to simplify the comparison with destinationCountry in CheckOverseasVacationAnswer().
+            string guess = Console.ReadLine().ToLower();
+            return guess;
+        }
+
+        static void CheckOverseasVacationAnswer(string guessedDestination)
+        {
+            // Preserving correct capitalization of destinationCountry, for use in output text
+            string destinationCountry = "South Korea";
+
+            if (guessedDestination == destinationCountry.ToLower())
+            {
+                Console.WriteLine("Correct!\n");
+            }
+            else
+            {
+                Console.WriteLine($"Incorrect, I will be traveling to {destinationCountry} on August 17, 2018.\n");
+            }
+        }
+
+
     }
 }
